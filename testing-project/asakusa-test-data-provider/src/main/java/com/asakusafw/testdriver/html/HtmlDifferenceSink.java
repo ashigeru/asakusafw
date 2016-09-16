@@ -177,7 +177,7 @@ public class HtmlDifferenceSink implements DifferenceSink {
             writer.println("</p>"); //$NON-NLS-1$
             writer.println("<div class=\"diagnostic\">"); //$NON-NLS-1$
             writer.println("<span class=\"diagnostic-message\">"); //$NON-NLS-1$
-            writer.println(toHtml(difference.getDiagnostic()));
+            writer.println(toHtml(Difference.format(difference.getDiagnostic())));
             writer.println("</span>"); //$NON-NLS-1$
             writer.println("</div>"); //$NON-NLS-1$
 

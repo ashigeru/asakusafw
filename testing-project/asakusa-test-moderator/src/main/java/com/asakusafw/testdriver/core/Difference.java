@@ -71,7 +71,7 @@ public class Difference {
                 Messages.getString("Difference.message"), //$NON-NLS-1$
                 getExpected(),
                 getActual(),
-                getDiagnostic());
+                format(getDiagnostic()));
     }
 
     /**

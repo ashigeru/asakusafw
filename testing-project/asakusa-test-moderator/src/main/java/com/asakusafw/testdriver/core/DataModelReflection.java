@@ -18,9 +18,12 @@ package com.asakusafw.testdriver.core;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.asakusafw.runtime.value.Date;
@@ -162,6 +165,24 @@ public class DataModelReflection implements Serializable {
             }
         } else if (value instanceof BigDecimal) {
             return ((BigDecimal) value).toPlainString();
+        } else if (value instanceof Collection<?>) {
+            List<String> strings = new ArrayList<>();
+            for (Object element : (Collection<?>) value) {
+                strings.add(toStringRepresentation(element));
+            }
+            return String.valueOf(strings);
+        } else if (value instanceof Map<?, ?>) {
+            Map<Object, String> strings = new LinkedHashMap<>();
+            for (Map.Entry<?, ?> entry : ((Map<?, ?>) value).entrySet()) {
+                strings.put(entry.getKey(), toStringRepresentation(entry.getValue()));
+            }
+            return String.valueOf(strings);
+        } else if (value instanceof Object[]) {
+            List<String> strings = new ArrayList<>();
+            for (Object element : (Object[]) value) {
+                strings.add(toStringRepresentation(element));
+            }
+            return String.valueOf(strings);
         }
         return String.valueOf(value);
     }

@@ -77,7 +77,7 @@ public class VerifyEngine {
                 if (old != null) {
                     throw new IOException(MessageFormat.format(
                             Messages.getString("VerifyEngine.errorConflictExpectedDataKey"), //$NON-NLS-1$
-                            key,
+                            Difference.format(key),
                             old,
                             next));
                 }
@@ -129,7 +129,7 @@ public class VerifyEngine {
                 if (saw != null) {
                     results.add(new Difference(actual, null, MessageFormat.format(
                             Messages.getString("VerifyEngine.errorConflictActualDataKey"), //$NON-NLS-1$
-                            key,
+                            Difference.format(key),
                             saw,
                             actual)));
                 } else {
